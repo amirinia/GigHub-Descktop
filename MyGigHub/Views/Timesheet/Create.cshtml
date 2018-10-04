@@ -1,0 +1,35 @@
+﻿@model MyGigHub.ViewModel.TimesheetFormViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Timesheet"))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartTime)
+        @Html.TextBoxFor(m => m.StartTime, new {
+       @class = "form-control",
+       disabled = "disabled",
+       @Value = DateTime.Now })
+        @Html.ValidationMessageFor(m => m.StartTime)
+    </div>
+
+ @*   <div class="form-group">
+        @Html.LabelFor(m => m.EndTime)
+        @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control", @Value = DateTime.Now })
+        @Html.ValidationMessageFor(m => m.EndTime)
+    </div>
+     *@
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+}

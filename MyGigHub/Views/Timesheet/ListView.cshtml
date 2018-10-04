@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MyGigHub.Models.Timesheet>
+
+@{
+    ViewBag.Title = "ListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=>model.Artist.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GetDifferenceTimes().Hours)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artist.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GetDifferenceTimes().Hours)
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

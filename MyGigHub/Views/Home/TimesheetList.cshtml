@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MyGigHub.Models.Timesheet>
+
+@{
+    ViewBag.Title = "Timesheet";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<ul>
+    @foreach (var timesheet in Model)
+    {
+    <li>
+        @timesheet.Artist.Name >> @timesheet.StartDay -@timesheet.EndDay - @timesheet.GetDifferenceTimes() @Html.ActionLink( "Edit", "Edit", new { id = timesheet.Id })
+    </li>
+    }
+</ul>
